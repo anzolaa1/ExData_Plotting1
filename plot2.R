@@ -25,7 +25,7 @@ if (size_kb < as.numeric(system("awk '/MemFree/ {print $2}' /proc/meminfo", inte
         table$Date2 <- strptime(paste(table$Date,table$Time), "%d/%m/%Y %H:%M:%S")
         data <- subset(table, Date2 >= "2007-02-01 00:00:00" & Date2 < "2007-02-03 00:00:00")
         png("plot2.png")
-                plot(x = data$Date2, y = data$Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", type = "l")
+        plot(x = data$Date2, y = data$Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", type = "l")
         dev.off()
 }
 
