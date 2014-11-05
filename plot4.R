@@ -25,17 +25,13 @@ if (size_kb < as.numeric(system("awk '/MemFree/ {print $2}' /proc/meminfo", inte
         table$Date2 <- strptime(paste(table$Date,table$Time), "%d/%m/%Y %H:%M:%S")
         data <- subset(table, Date2 >= "2007-02-01 00:00:00" & Date2 < "2007-02-03 00:00:00")
         png("plot4.png")
-                par(mfcol=c(2,2))
-                
-                plot(x = data$Date2, y = data$Global_active_power, ylab = "Global Active Power", xlab = "", type = "l")
-                
-                plot(x=data$Date2, data$Sub_metering_1, type="l", col="black", xlab = "", ylab = "Energy sub metering")
-                lines(x=data$Date2, data$Sub_metering_2, type="l",col="red")
-                lines(x=data$Date2, data$Sub_metering_3, type="l",col="blue")
-                legend(x = "topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col = c("black", "red", "blue"), lwd = 2, bty = "n")
-                
-                plot(x = data$Date2, y = data$Voltage, ylab = "Voltage", xlab = "datetime", type = "l")
-                
-                plot(x = data$Date2, y = data$Global_reactive_power, ylab = "Global_reactive_power", xlab = "datetime", type = "l")
+        par(mfcol=c(2,2))
+        plot(x = data$Date2, y = data$Global_active_power, ylab = "Global Active Power", xlab = "", type = "l")
+        plot(x=data$Date2, data$Sub_metering_1, type="l", col="black", xlab = "", ylab = "Energy sub metering")
+        lines(x=data$Date2, data$Sub_metering_2, type="l",col="red")
+        lines(x=data$Date2, data$Sub_metering_3, type="l",col="blue")
+        legend(x = "topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col = c("black", "red", "blue"), lwd = 2, bty = "n")
+        plot(x = data$Date2, y = data$Voltage, ylab = "Voltage", xlab = "datetime", type = "l")
+        plot(x = data$Date2, y = data$Global_reactive_power, ylab = "Global_reactive_power", xlab = "datetime", type = "l")
         dev.off()
 }
